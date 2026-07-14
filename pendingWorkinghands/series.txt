@@ -1,0 +1,68 @@
+ 
+
+
+Recommended Learning Order
+
+In problems ko seekhne ke liye ye sequence sabse effective rahega:
+
+Arrays
+Strings
+Sorting & Searching
+Number Theory (GCD, LCM, Prime, Factorial)
+Recursion
+Backtracking
+Dynamic Programming (basics)
+Trees
+Linked Lists
+Graphs (next step, agar advanced DSA continue karni ho)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+7:20 - Sorting Algorithms  
+10:27 - Bubble Sort  
+22:56 - Insertion Sort  
+31:41 - Selection Sort  
+37:13 - Merge Sort  
+55:01 - Quick Sort  
+1:03:46 - Counting Sort  
+1:11:00 - Comparing Sorting Algorithms  
+1:14:36 - Stable vs Unstable Algorithms  
+1:18:32 - Adaptive vs Non-Adaptive Algorithms  
+1:20:01 - In-Place Sorting Algorithms  
+1:21:16 - Practice Problems on Sorting  
+1:21:29 - Sort Colors  
+1:27:48 - Merge Sorted Array  
+1:36:05 - Non-Overlapping Intervals  
+1:44:46 - Searching Algorithms  
+1:45:38 - Linear Search  
+1:48:08 - Comparison - Linear vs Binary Search  
+1:50:56 - Binary Search  
+1:57:19 - Practice Problems on Searching  
+1:57:55 - Search Insert Position  
+2:13:16 - Find First and Last Position of Element in Sorted Array  
+2:18:26 - Peak Index in a Mountain Array  
+2:26:27 - Search in Rotated Sorted Array  
+2:31:36 - Sqrt(x)  
+2:38:10 - Koko Eating Bananas  
+2:52:55 - Search a 2D Matrix  
+3:00:56 - Sort Array by Parity  
+3:06:01 - Conclusion
