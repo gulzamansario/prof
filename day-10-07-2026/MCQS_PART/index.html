@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python MCQ Quiz Application</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #3498db;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-color: #333333;
+            --border-color: #e2e8f0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        h1 {
+            color: var(--primary-color);
+            margin-top: 0;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+            padding: 15px;
+            background: #f1f5f9;
+            border-radius: 6px;
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            flex: 1;
+            min-width: 200px;
+        }
+
+        label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #4a5568;
+        }
+
+        select {
+            padding: 8px 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            background-color: #fff;
+            font-size: 0.95rem;
+            outline: none;
+        }
+
+        .btn-print {
+            align-self: flex-end;
+            padding: 9px 20px;
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: background 0.2s;
+        }
+
+        .btn-print:hover {
+            background-color: #2980b9;
+        }
+
+        .quiz-container {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .question-card {
+            padding: 20px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            background: var(--card-bg);
+        }
+
+        .question-meta {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .badge {
+            font-size: 0.75rem;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .badge-easy { background: #d4edda; color: #155724; }
+        .badge-medium { background: #fff3cd; color: #856404; }
+        .badge-hard { background: #f8d7da; color: #721c24; }
+        .badge-topic { background: #e8f4fd; color: #1d8cf8; }
+
+        .question-text {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin: 0 0 15px 0;
+            white-space: pre-wrap;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+
+        @media(min-width: 600px) {
+            .options-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .option-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            cursor: pointer;
+            background: #fafafa;
+            transition: background 0.2s;
+        }
+
+        .option-item:hover {
+            background: #f1f5f9;
+        }
+
+        .option-item input[type="radio"] {
+            margin: 0;
+            transform: scale(1.1);
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            color: #718096;
+            font-style: italic;
+        }
+
+        /* Print Specific Styles */
+        @media print {
+            body {
+                background: white;
+                color: black;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 0;
+                max-width: 100%;
+            }
+            .controls {
+                display: none;
+            }
+            .question-card {
+                page-break-inside: avoid;
+                border: none;
+                border-bottom: 1px solid #ccc;
+                padding: 15px 0;
+                border-radius: 0;
+            }
+            .option-item {
+                background: transparent;
+                border: 1px solid #ddd;
+            }
+            .option-item:hover {
+                background: transparent;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Python Quiz Engine</h1>
+    
+    <!-- Filter UI Section -->
+    <div class="controls">
+        <div class="control-group">
+            <label for="difficultyFilter">Difficulty Level</label>
+            <select id="difficultyFilter">
+                <option value="all">All Difficulties</option>
+                <option value="easy">Easy</option>
+                <option value="medium">Medium</option>
+                <option value="hard">Hard</option>
+            </select>
+        </div>
+        
+        <div class="control-group">
+            <label for="topicFilter">Topic / Category</label>
+            <select id="topicFilter">
+                <option value="all">All Topics</option>
+                <option value="Modules, pip, & Comments">Modules, pip, & Comments</option>
+                <option value="Variables and Data Types">Variables and Data Types</option>
+                <option value="Strings">Strings</option>
+                <option value="Lists and Tuples">Lists and Tuples</option>
+                <option value="Dictionaries and Sets">Dictionaries and Sets</option>
+                <option value="Conditional Statements">Conditional Statements</option>
+            </select>
+        </div>
+        
+        <button class="btn-print" onclick="window.print()">Print Test Sheet</button>
+    </div>
+
+    <!-- Container where quiz cards inject -->
+    <div id="quizContainer" class="quiz-container"></div>
+</div>
+
+<script type="module">
+    // Direct source integration inside template wrapper to allow cross-origin direct runtime mapping
+    import easyData from "./easy.js";
+    import mediumData from "./medium.js";
+    import hardData from "./hard.js";
+
+    // Replicating standard index.js model architecture
+    const dataset = {
+        easy: easyData,
+        medium: mediumData,
+        hard: hardData
+    };
+
+    const quizContainer = document.getElementById('quizContainer');
+    const difficultyFilter = document.getElementById('difficultyFilter');
+    const topicFilter = document.getElementById('topicFilter');
+
+    function renderQuiz() {
+        quizContainer.innerHTML = '';
+        const selectedDiff = difficultyFilter.value;
+        const selectedTopic = topicFilter.value;
+
+        let combinedQuestions = [];
+
+        // Compile based on targeted indexes
+        if (selectedDiff === 'all') {
+            combinedQuestions = [...dataset.easy, ...dataset.medium, ...dataset.hard];
+        } else {
+            combinedQuestions = [...dataset[selectedDiff]];
+        }
+
+        // Apply secondary category filter layers
+        if (selectedTopic !== 'all') {
+            combinedQuestions = combinedQuestions.filter(q => q.category === selectedTopic);
+        }
+
+        if (combinedQuestions.length === 0) {
+            quizContainer.innerHTML = '<div class="no-results">No questions match the selected filter criteria.</div>';
+            return;
+        }
+
+        // Inject Question Cards safely without rendering internal hidden structural tags
+        combinedQuestions.forEach((q) => {
+            const card = document.createElement('div');
+            card.className = 'question-card';
+
+            const metaRow = document.createElement('div');
+            metaRow.className = 'question-meta';
+            metaRow.innerHTML = `
+                <span class="badge badge-${q.difficulty}">${q.difficulty}</span>
+                <span class="badge badge-topic">${q.category}</span>
+            `;
+
+            const qText = document.createElement('p');
+            qText.className = 'question-text';
+            qText.textContent = `${q.id}. ${q.question}`;
+
+            const optionsGrid = document.createElement('div');
+            optionsGrid.className = 'options-grid';
+
+            q.options.forEach((option, index) => {
+                const label = document.createElement('label');
+                label.className = 'option-item';
+
+                const radio = document.createElement('input');
+                radio.type = 'radio';
+                radio.name = `question_${q.id}`;
+                radio.value = index;
+
+                const textSpan = document.createElement('span');
+                textSpan.textContent = option;
+
+                label.appendChild(radio);
+                label.appendChild(textSpan);
+                optionsGrid.appendChild(label);
+            });
+
+            card.appendChild(metaRow);
+            card.appendChild(qText);
+            card.appendChild(optionsGrid);
+            quizContainer.appendChild(card);
+        });
+    }
+
+    // Event listeners to build asynchronous filter logic cascades
+    difficultyFilter.addEventListener('change', renderQuiz);
+    topicFilter.addEventListener('change', renderQuiz);
+
+    // Initial render call execution step
+    renderQuiz();
+</script>
+
+</body>
+</html>
