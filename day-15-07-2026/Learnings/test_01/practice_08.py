@@ -15,6 +15,9 @@
 st = "programming"
 stack=[]
 for chr in st:
-    stack.append(chr)
-print(stack)
-    
+    if chr not in st:
+        stack.append(chr)
+    else:
+        stack.pop()
+result = "".join(stack)
+print(result)
