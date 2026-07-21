@@ -1,0 +1,1551 @@
+<h1 id="complete-az-guide-to-python-3-math-module">Complete A–Z Guide to Python 3 <code>math</code> Module</h1>
+<h2 id="summary-table">Summary Table</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Category</th>
+<th>Purpose</th>
+<th>Syntax</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>math.ceil()</code></td>
+<td>Number Rounding</td>
+<td>Returns the smallest integer greater than or equal to x</td>
+<td><code>math.ceil(x)</code></td>
+</tr>
+<tr>
+<td><code>math.comb()</code></td>
+<td>Combinatorics</td>
+<td>Returns the number of ways to choose k items from n items</td>
+<td><code>math.comb(n, k)</code></td>
+</tr>
+<tr>
+<td><code>math.copysign()</code></td>
+<td>Number Manipulation</td>
+<td>Returns a float with magnitude of x and sign of y</td>
+<td><code>math.copysign(x, y)</code></td>
+</tr>
+<tr>
+<td><code>math.fabs()</code></td>
+<td>Number Manipulation</td>
+<td>Returns the absolute value of x as a float</td>
+<td><code>math.fabs(x)</code></td>
+</tr>
+<tr>
+<td><code>math.factorial()</code></td>
+<td>Combinatorics</td>
+<td>Returns the factorial of x</td>
+<td><code>math.factorial(x)</code></td>
+</tr>
+<tr>
+<td><code>math.floor()</code></td>
+<td>Number Rounding</td>
+<td>Returns the largest integer less than or equal to x</td>
+<td><code>math.floor(x)</code></td>
+</tr>
+<tr>
+<td><code>math.fmod()</code></td>
+<td>Number Manipulation</td>
+<td>Returns the remainder of x/y (like modulo but for floats)</td>
+<td><code>math.fmod(x, y)</code></td>
+</tr>
+<tr>
+<td><code>math.frexp()</code></td>
+<td>Number Manipulation</td>
+<td>Returns mantissa and exponent of x as (m, e)</td>
+<td><code>math.frexp(x)</code></td>
+</tr>
+<tr>
+<td><code>math.fsum()</code></td>
+<td>Number Manipulation</td>
+<td>Returns accurate sum of all numbers in an iterable</td>
+<td><code>math.fsum(iterable)</code></td>
+</tr>
+<tr>
+<td><code>math.gcd()</code></td>
+<td>Number Theory</td>
+<td>Returns the greatest common divisor of x and y</td>
+<td><code>math.gcd(x, y)</code></td>
+</tr>
+<tr>
+<td><code>math.isclose()</code></td>
+<td>Comparison</td>
+<td>Checks if two numbers are close to each other</td>
+<td><code>math.isclose(a, b, *, rel_tol=1e-09, abs_tol=0.0)</code></td>
+</tr>
+<tr>
+<td><code>math.isfinite()</code></td>
+<td>Comparison</td>
+<td>Checks if x is a finite number</td>
+<td><code>math.isfinite(x)</code></td>
+</tr>
+<tr>
+<td><code>math.isinf()</code></td>
+<td>Comparison</td>
+<td>Checks if x is infinite</td>
+<td><code>math.isinf(x)</code></td>
+</tr>
+<tr>
+<td><code>math.isnan()</code></td>
+<td>Comparison</td>
+<td>Checks if x is Not-a-Number (NaN)</td>
+<td><code>math.isnan(x)</code></td>
+</tr>
+<tr>
+<td><code>math.isqrt()</code></td>
+<td>Number Theory</td>
+<td>Returns the integer square root of x</td>
+<td><code>math.isqrt(x)</code></td>
+</tr>
+<tr>
+<td><code>math.ldexp()</code></td>
+<td>Number Manipulation</td>
+<td>Returns x * (2**i)</td>
+<td><code>math.ldexp(x, i)</code></td>
+</tr>
+<tr>
+<td><code>math.lcm()</code></td>
+<td>Number Theory</td>
+<td>Returns the least common multiple of arguments</td>
+<td><code>math.lcm(*integers)</code></td>
+</tr>
+<tr>
+<td><code>math.perm()</code></td>
+<td>Combinatorics</td>
+<td>Returns the number of ways to choose and order k items from n</td>
+<td><code>math.perm(n, k=None)</code></td>
+</tr>
+<tr>
+<td><code>math.modf()</code></td>
+<td>Number Manipulation</td>
+<td>Returns fractional and integer parts of x</td>
+<td><code>math.modf(x)</code></td>
+</tr>
+<tr>
+<td><code>math.nextafter()</code></td>
+<td>Number Manipulation</td>
+<td>Returns the next float after x towards y</td>
+<td><code>math.nextafter(x, y)</code></td>
+</tr>
+<tr>
+<td><code>math.pow()</code></td>
+<td>Exponentiation</td>
+<td>Returns x raised to power y</td>
+<td><code>math.pow(x, y)</code></td>
+</tr>
+<tr>
+<td><code>math.prod()</code></td>
+<td>Number Manipulation</td>
+<td>Returns the product of all elements in an iterable</td>
+<td><code>math.prod(iterable, *, start=1)</code></td>
+</tr>
+<tr>
+<td><code>math.remainder()</code></td>
+<td>Number Manipulation</td>
+<td>Returns the IEEE 754-style remainder of x/y</td>
+<td><code>math.remainder(x, y)</code></td>
+</tr>
+<tr>
+<td><code>math.trunc()</code></td>
+<td>Number Rounding</td>
+<td>Truncates x to an integer (removes decimal part)</td>
+<td><code>math.trunc(x)</code></td>
+</tr>
+<tr>
+<td><code>math.exp()</code></td>
+<td>Exponential/Log</td>
+<td>Returns e raised to the power x</td>
+<td><code>math.exp(x)</code></td>
+</tr>
+<tr>
+<td><code>math.expm1()</code></td>
+<td>Exponential/Log</td>
+<td>Returns e**x - 1</td>
+<td><code>math.expm1(x)</code></td>
+</tr>
+<tr>
+<td><code>math.log()</code></td>
+<td>Exponential/Log</td>
+<td>Returns natural logarithm of x (or log base b)</td>
+<td><code>math.log(x, base)</code></td>
+</tr>
+<tr>
+<td><code>math.log10()</code></td>
+<td>Exponential/Log</td>
+<td>Returns base-10 logarithm of x</td>
+<td><code>math.log10(x)</code></td>
+</tr>
+<tr>
+<td><code>math.log1p()</code></td>
+<td>Exponential/Log</td>
+<td>Returns natural logarithm of (1+x)</td>
+<td><code>math.log1p(x)</code></td>
+</tr>
+<tr>
+<td><code>math.log2()</code></td>
+<td>Exponential/Log</td>
+<td>Returns base-2 logarithm of x</td>
+<td><code>math.log2(x)</code></td>
+</tr>
+<tr>
+<td><code>math.sqrt()</code></td>
+<td>Exponentiation</td>
+<td>Returns square root of x</td>
+<td><code>math.sqrt(x)</code></td>
+</tr>
+<tr>
+<td><code>math.acos()</code></td>
+<td>Trigonometric</td>
+<td>Returns arc cosine of x in radians</td>
+<td><code>math.acos(x)</code></td>
+</tr>
+<tr>
+<td><code>math.acosh()</code></td>
+<td>Trigonometric</td>
+<td>Returns inverse hyperbolic cosine of x</td>
+<td><code>math.acosh(x)</code></td>
+</tr>
+<tr>
+<td><code>math.asin()</code></td>
+<td>Trigonometric</td>
+<td>Returns arc sine of x in radians</td>
+<td><code>math.asin(x)</code></td>
+</tr>
+<tr>
+<td><code>math.asinh()</code></td>
+<td>Trigonometric</td>
+<td>Returns inverse hyperbolic sine of x</td>
+<td><code>math.asinh(x)</code></td>
+</tr>
+<tr>
+<td><code>math.atan()</code></td>
+<td>Trigonometric</td>
+<td>Returns arc tangent of x in radians</td>
+<td><code>math.atan(x)</code></td>
+</tr>
+<tr>
+<td><code>math.atan2()</code></td>
+<td>Trigonometric</td>
+<td>Returns arc tangent of y/x in radians</td>
+<td><code>math.atan2(y, x)</code></td>
+</tr>
+<tr>
+<td><code>math.atanh()</code></td>
+<td>Trigonometric</td>
+<td>Returns inverse hyperbolic tangent of x</td>
+<td><code>math.atanh(x)</code></td>
+</tr>
+<tr>
+<td><code>math.cos()</code></td>
+<td>Trigonometric</td>
+<td>Returns cosine of x radians</td>
+<td><code>math.cos(x)</code></td>
+</tr>
+<tr>
+<td><code>math.cosh()</code></td>
+<td>Trigonometric</td>
+<td>Returns hyperbolic cosine of x</td>
+<td><code>math.cosh(x)</code></td>
+</tr>
+<tr>
+<td><code>math.sin()</code></td>
+<td>Trigonometric</td>
+<td>Returns sine of x radians</td>
+<td><code>math.sin(x)</code></td>
+</tr>
+<tr>
+<td><code>math.sinh()</code></td>
+<td>Trigonometric</td>
+<td>Returns hyperbolic sine of x</td>
+<td><code>math.sinh(x)</code></td>
+</tr>
+<tr>
+<td><code>math.tan()</code></td>
+<td>Trigonometric</td>
+<td>Returns tangent of x radians</td>
+<td><code>math.tan(x)</code></td>
+</tr>
+<tr>
+<td><code>math.tanh()</code></td>
+<td>Trigonometric</td>
+<td>Returns hyperbolic tangent of x</td>
+<td><code>math.tanh(x)</code></td>
+</tr>
+<tr>
+<td><code>math.degrees()</code></td>
+<td>Angle Conversion</td>
+<td>Converts radians to degrees</td>
+<td><code>math.degrees(x)</code></td>
+</tr>
+<tr>
+<td><code>math.radians()</code></td>
+<td>Angle Conversion</td>
+<td>Converts degrees to radians</td>
+<td><code>math.radians(x)</code></td>
+</tr>
+<tr>
+<td><code>math.pi</code></td>
+<td>Constant</td>
+<td>Value of pi (π) = 3.141592653589793</td>
+<td><code>math.pi</code></td>
+</tr>
+<tr>
+<td><code>math.e</code></td>
+<td>Constant</td>
+<td>Value of e = 2.718281828459045</td>
+<td><code>math.e</code></td>
+</tr>
+<tr>
+<td><code>math.tau</code></td>
+<td>Constant</td>
+<td>Value of tau (τ) = 2π = 6.283185307179586</td>
+<td><code>math.tau</code></td>
+</tr>
+<tr>
+<td><code>math.inf</code></td>
+<td>Constant</td>
+<td>Floating-point positive infinity</td>
+<td><code>math.inf</code></td>
+</tr>
+<tr>
+<td><code>math.nan</code></td>
+<td>Constant</td>
+<td>Floating-point Not-a-Number</td>
+<td><code>math.nan</code></td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="detailed-explanations">Detailed Explanations</h2>
+<hr>
+<h1 id="mathceil"><code>math.ceil()</code></h1>
+<p><strong>Purpose:</strong>
+Returns the smallest integer that is greater than or equal to x (round up).</p>
+<p><strong>Syntax:</strong></p>
+<pre><code class="language-python">math.ceil(x)
+</code></pre>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>x</code>: Any number (int or float)</li>
+</ul>
+<p><strong>Returns:</strong>
+Integer value (as int)</p>
+<p><strong>Easy Hinglish Explanation:</strong>
+Socho aapke paas ek number hai jaise 2.3. Isko ceil karte hain toh yeh 3 ho jaata hai. Hamesha upar ki taraf round karta hai, chahe decimal kuch bhi ho. Agar number already integer hai toh wahi return karta hai.</p>
+<p><strong>Real-Life Analogy:</strong>
+Aap taxi booking kar rahe hain. Agar distance 2.3 km hai, toh taxi waala 3 km ka paisa lega. Woh upar round karega.</p>
+<p><strong>Example 1 (Basic):</strong></p>
+<pre><code class="language-python">import math
+
+print(math.ceil(2.3))   # 3
+print(math.ceil(2.0))   # 2
+print(math.ceil(-2.3))  # -2 (less negative value)
+</code></pre>
+<hr>
+<h1 id="mathcomb"><code>math.comb()</code></h1>
+<p><strong>Purpose:</strong>
+Returns the number of ways to select k items from n items without order (combinations).</p>
+<p><strong>Syntax:</strong></p>
+<pre><code class="language-python">math.comb(n, k)
+</code></pre>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>n</code>: Total number of items (non-negative integer)</li>
+<li><code>k</code>: Number of items to select (non-negative integer, k &lt;= n)</li>
+</ul>
+<p><strong>Returns:</strong>
+Integer value (as int)</p>
+<p><strong>Easy Hinglish Explanation:</strong>
+Aapke paas n cheezon ka group hai. Aapko k cheezein choose karni hain, lekin order matter nahi karta. Kya order se farak nahi padta. Jaise 5 dost hain, 2 ko party pe bulana hai - kitne tareeke hain? Yeh function woh number batata hai.</p>
+<p><strong>Real-Life Analogy:</strong>
+Aap ice cream shop mein hain. 10 flavours hain, aapko 3 choose karne hain. Order koi matter nahi karta (vanilla-chocolate-strawberry same hai chocolate-strawberry-vanilla). Math.comb(10, 3) bataayega kitne combinations possible hain.</p>
+<p><strong>Example 1 (Basic):</strong></p>
+<pre><code class="language-python">import math
+
+print(math.comb(5, 2))   # 10 (5 choose 2)
+print(math.comb(10, 3))  # 120
+print(math.comb(5, 5))   # 1 (all items selected)
+</code></pre>
+<hr>
+<h1 id="mathcopysign"><code>math.copysign()</code></h1>
+<p><strong>Purpose:</strong>
+Returns a float with the magnitude (value) of x but the sign of y.</p>
+<p><strong>Syntax:</strong></p>
+<pre><code class="language-python">math.copysign(x, y)
+</code></pre>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>x</code>: The number whose magnitude will be used</li>
+<li><code>y</code>: The number whose sign will be used</li>
+</ul>
+<p><strong>Returns:</strong>
+Float value</p>
+<p><strong>Easy Hinglish Explanation:</strong>
+Do numbers hain - x aur y. Yeh function x ki value leta hai, lekin uska sign (positive/negative) y se leta hai. Agar y positive hai toh result positive hoga, agar y negative hai toh result negative hoga. X ki value change nahi hoti, sirf sign change hota hai.</p>
+<p><strong>Real-Life Analogy:</strong>
+Aapko ek amount Rs. 100 mila hai (x), lekin account statement mein koi mistake se negative sign aa gaya (y). Copysign aapko bataayega ki actual amount Rs. 100 hai lekin sign y ke hisaab se laga do.</p>
+<p><strong>Example 1 (Basic):</strong></p>
+<pre><code class="language-python">import math
+
+print(math.copysign(5.0, -3.0))   # -5.0
+print(math.copysign(-5.0, 3.0))   # 5.0
+print(math.copysign(2.5, -0.0))   # -2.5
+</code></pre>
+<hr>
+<h1 id="mathfabs"><code>math.fabs()</code></h1>
+<p><strong>Purpose:</strong>
+Returns the absolute value of x as a float (always non-negative).</p>
+<p><strong>Syntax:</strong></p>
+<pre><code class="language-python">math.fabs(x)
+</code></pre>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>x</code>: Any number (int or float)</li>
+</ul>
+<p><strong>Returns:</strong>
+Float value (non-negative)</p>
+<p><strong>Easy Hinglish Explanation:</strong>
+Kisi bhi number ka positive value return karta hai. Agar number positive hai toh wahi return karega, agar negative hai toh negative sign hata dega. Hamesha float return karta hai, chahe aap int daalein.</p>
+<p><strong>Real-Life Analogy:</strong>
+Aap bank statement dekh rahe hain. Agar aapka balance -5000 hai, toh actual loss 5000 hai. Fabs woh 5000 bataayega.</p>
+<p><strong>Example 1 (Basic):</strong></p>
+<pre><code class="language-python">import math
+
+print(math.fabs(-10))   # 10.0
+print(math.fabs(10))    # 10.0
+print(math.fabs(-3.5))  # 3.5
+</code></pre>
+<hr>
+<h1 id="mathfactorial"><code>math.factorial()</code></h1>
+<p><strong>Purpose:</strong>
+Returns the factorial of x (x! = x * (x-1) * (x-2) * ... * 1).</p>
+<p><strong>Syntax:</strong></p>
+<pre><code class="language-python">math.factorial(x)
+</code></pre>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>x</code>: Non-negative integer</li>
+</ul>
+<p><strong>Returns:</strong>
+Integer value</p>
+<p><strong>Easy Hinglish Explanation:</strong>
+Factorial matlab kisi number ko usse chhote saare numbers se multiply karna. Jaise 5! = 5<em>4</em>3<em>2</em>1 = 120. Sirf positive integers ke liye kaam karta hai. 0! = 1 hota hai.</p>
+<p><strong>Real-Life Analogy:</strong>
+Aap 5 books ko shelf par kitne tareeke se arrange kar sakte hain? 5! = 120 tareeke. Yeh function woh number bataata hai.</p>
+<p><strong>Example 1 (Basic):</strong></p>
+<pre><code class="language-python">import math
+
+print(math.factorial(5))   # 120
+print(math.factorial(0))   # 1
+print(math.factorial(3))   # 6
+</code></pre>
+<hr>
+<h1 id="mathfloor"><code>math.floor()</code></h1>
+<p><strong>Purpose:</strong>
+Returns the largest integer less than or equal to x (round down).</p>
+<p><strong>Syntax:</strong></p>
+<pre><code class="language-python">math.floor(x)
+</code></pre>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>x</code>: Any number (int or float)</li>
+</ul>
+<p><strong>Returns:</strong>
+Integer value (as int)</p>
+<p><strong>Easy Hinglish Explanation:</strong>
+Kisi bhi number ko neeche ki taraf round karta hai. 2.9 ko floor karein toh 2 aayega. -2.3 ko floor karein toh -3 aayega (kyunki -3, -2 se chhota hai). Hamesha chhota integer deta hai.</p>
+<p><strong>Real-Life Analogy:</strong>
+Aap cinema hall mein hain. Ticket 500 rupees hai, aapke paas 499.50 hain toh aap nahi le sakte. Floor neeche round karega, matlab 499.50 -&gt; 499, jo ticket ke liye kaafi nahi.</p>
+<p><strong>Example 1 (Basic):</strong></p>
+<pre><code class="language-python">import math
+
+print(math.floor(2.9))   # 2
+print(math.floor(2.0))   # 2
+print(math.floor(-2.3))  # -3
+</code></pre>
+<hr>
+<h1 id="mathfmod"><code>math.fmod()</code></h1>
+<p><strong>Purpose:</strong>
+Returns the remainder of x divided by y (like modulo but for floating-point numbers).</p>
+<p><strong>Syntax:</strong></p>
+<pre><code class="language-python">math.fmod(x, y)
+</code></pre>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>x</code>: Dividend</li>
+<li><code>y</code>: Divisor</li>
+</ul>
+<p><strong>Returns:</strong>
+Float value (remainder)</p>
+<p><strong>Easy Hinglish Explanation:</strong>
+Jab aap x ko y se divide karte hain, toh remainder (baki) kya bachta hai? Fmod woh bachta hua hissa return karta hai. Simple modulo (%) ki tarah, lekin yeh floats ke liye accurate hai.</p>
+<p><strong>Real-Life Analogy:</strong>
+Aap 10 rotiyan distribute kar rahe hain 3 logo mein. Har ek ko 3 rotiyan milengi (9 gyi), 1 bachegi. Fmod(10, 3) = 1.0.</p>
+<p><strong>Example 1 (Basic):</strong></p>
+<pre><code class="language-python">import math
+
+print(math.fmod(10, 3))    # 1.0
+print(math.fmod(7.5, 2.5)) # 0.0
+print(math.fmod(10, 4))    # 2.0
+</code></pre>
+<hr>
+<h1 id="mathfrexp"><code>math.frexp()</code></h1>
+<p><strong>Purpose:</strong>
+Returns the mantissa (m) and exponent (e) of x such that x = m * 2**e.</p>
+<p><strong>Syntax:</strong></p>
+<pre><code class="language-python">math.frexp(x)
+</code></pre>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>x</code>: Any number (int or float)</li>
+</ul>
+<p><strong>Returns:</strong>
+Tuple (mantissa, exponent) where mantissa is float between 0.5 and 1, exponent is int</p>
+<p><strong>Easy Hinglish Explanation:</strong>
+Kisi bhi number ko scientific notation mein break karta hai. Jaise 10 = 0.625 * 16 (0.625 * 2**4). Yeh function (0.625, 4) return karega. Isse computers numbers store karte hain.</p>
+<p><strong>Real-Life Analogy:</strong>
+Aap weight ko alag tareeke se likhna chahte hain. Jaise 100 kg = 1 * 100, lekin yahan 2 ki power mein likhte hain. Frexp yeh conversion karta hai.</p>
+<p><strong>Example 1 (Basic):</strong></p>
+<pre><code class="language-python">import math
+
+print(math.frexp(10))   # (0.625, 4) because 0.625 * 2**4 = 10
+print(math.frexp(8))    # (0.5, 4) because 0.5 * 2**4 = 8
+</code></pre>
+<hr>
+<h1 id="mathfsum"><code>math.fsum()</code></h1>
+<p><strong>Purpose:</strong>
+Returns an accurate sum of all numbers in an iterable (avoids floating-point errors).</p>
+<p><strong>Syntax:</strong></p>
+<pre><code class="language-python">math.fsum(iterable)
+</code></pre>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>iterable</code>: Any iterable (list, tuple, etc.) containing numbers</li>
+</ul>
+<p><strong>Returns:</strong>
+Float value (sum)</p>
+<p><strong>Easy Hinglish Explanation:</strong>
+Normal sum() function floating-point numbers ko add karte time small errors create kar sakta hai. Fsum un errors ko avoid karta hai aur accurate sum deta hai. Especially important jab bahut saare decimal numbers add kar rahe ho.</p>
+<p><strong>Real-Life Analogy:</strong>
+Aap 1000 transactions ka total nikaal rahe hain. Har transaction mein paise hain (decimal). Fsum ensure karega ki total exact aaye, koi 0.0001 ka error na ho.</p>
+<p><strong>Example 1 (Basic):</strong></p>
+<pre><code class="language-python">import math
+
+print(math.fsum([0.1, 0.2, 0.3]))   # 0.6
+print(math.fsum([1.0, 2.0, 3.5]))    # 6.5
+print(math.fsum([0.1] * 10))          # 1.0 (accurate)
+</code></pre>
+<hr>
+<h1 id="mathgcd"><code>math.gcd()</code></h1>
+<p><strong>Purpose:</strong>
+Returns the greatest common divisor (GCD) of x and y.</p>
+<p><strong>Syntax:</strong></p>
+<pre><code class="language-python">math.gcd(x, y)
+</code></pre>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>x</code>: First integer</li>
+<li><code>y</code>: Second integer</li>
+</ul>
+<p><strong>Returns:</strong>
+Integer value (GCD)</p>
+<p><strong>Easy Hinglish Explanation:</strong>
+Do numbers lo. Un dono ko divide karne wala sabse bada number kya hai? GCD woh number bataata hai. Jaise 12 aur 18 dono 6 se divide ho sakte hain, aur 6 se bada koi nahi, toh GCD = 6.</p>
+<p><strong>Real-Life Analogy:</strong>
+Aapke paas 12 apples aur 18 oranges hain. Aapko dono ko equal groups mein distribute karna hai. Sabse bada group size kya ho sakta hai? GCD(12, 18) = 6, matlab 6 apples ke 2 groups aur 6 oranges ke 3 groups.</p>
+<p><strong>Example 1 (Basic):</strong></p>
+<pre><code class="language-python">import math
+
+print(math.gcd(12, 18))   # 6
+print(math.gcd(100, 35))  # 5
+print(math.gcd(17, 19))   # 1 (coprime)
+</code></pre>
+<hr>
+<h1 id="mathisclose"><code>math.isclose()</code></h1>
+<p><strong>Purpose:</strong>
+Checks if two numbers are close to each other within a tolerance.</p>
+<p><strong>Syntax:</strong></p>
+<pre><code class="language-python">math.isclose(a, b, *, rel_tol=1e-09, abs_tol=0.0)
+</code></pre>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>a</code>: First number</li>
+<li><code>b</code>: Second number</li>
+<li><code>rel_tol</code>: Relative tolerance (default 1e-09)</li>
+<li><code>abs_tol</code>: Absolute tolerance (default 0.0)</li>
+</ul>
+<p><strong>Returns:</strong>
+Boolean (True/False)</p>
+<p><strong>Easy Hinglish Explanation:</strong>
+Do numbers compare karte hain. Agar wo ek doosre ke bahut close hain (toleration ke andar) toh True return karta hai, nahi toh False. Computers mein floating-point numbers exact nahi hote, isliye exact equal check karna mushkil hai. Isclose se hum check kar sakte hain ki numbers almost equal hain ya nahi.</p>
+<p><strong>Real-Life Analogy:</strong>
+Aap do measuring tapes se length measure kar rahe hain. Ek ne 10.0001 cm dikhaya, doosre ne 10.0002 cm. Exact same nahi hain, lekin almost same hain. Isclose bolega ki yeh close hain.</p>
+<p><strong>Example 1 (Basic):</strong></p>
+<pre><code class="language-python">import math
+
+print(math.isclose(0.1 + 0.2, 0.3))           # True
+print(math.isclose(1.0, 1.0000000001))        # True
+print(math.isclose(1.0, 1.0001, rel_tol=1e-3)) # True (1e-3 = 0.001)
+</code></pre>
+<hr>
+<h1 id="mathisfinite"><code>math.isfinite()</code></h1>
+<p><strong>Purpose:</strong>
+Checks if x is a finite number (not infinity and not NaN).</p>
+<p><strong>Syntax:</strong></p>
+<pre><code class="language-python">math.isfinite(x)
+</code></pre>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>x</code>: Any number</li>
+</ul>
+<p><strong>Returns:</strong>
+Boolean (True/False)</p>
+<p><strong>Easy Hinglish Explanation:</strong>
+Check karta hai ki number finite hai ya nahi. Infinite aur NaN (Not a Number) finite nahi hain. Baaki sab finite hain.</p>
+<p><strong>Real-Life Analogy:</strong>
+Aap account balance check kar rahe hain. Agar balance ek actual number hai toh finite hai. Agar NaN (error) ya infinite (unlimited) hai toh finite nahi hai.</p>
+<p><strong>Example 1 (Basic):</strong></p>
+<pre><code class="language-python">import math
+
+print(math.isfinite(10))          # True
+print(math.isfinite(float('inf')))# False
+print(math.isfinite(float('nan')))# False
+</code></pre>
+<hr>
+<h1 id="mathisinf"><code>math.isinf()</code></h1>
+<p><strong>Purpose:</strong>
+Checks if x is positive or negative infinity.</p>
+<p><strong>Syntax:</strong></p>
+<pre><code class="language-python">math.isinf(x)
+</code></pre>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>x</code>: Any number</li>
+</ul>
+<p><strong>Returns:</strong>
+Boolean (True/False)</p>
+<p><strong>Easy Hinglish Explanation:</strong>
+Check karta hai ki number infinite hai ya nahi. Positive infinity (+inf) ya negative infinity (-inf) dono True honge.</p>
+<p><strong>Real-Life Analogy:</strong>
+Aap speed check kar rahe hain. Agar speed unlimited (infinite) hai toh isinf True return karega. Actual speed hai toh False.</p>
+<p><strong>Example 1 (Basic):</strong></p>
+<pre><code class="language-python">import math
+
+print(math.isinf(float('inf')))    # True
+print(math.isinf(float('-inf')))   # True
+print(math.isinf(10))               # False
+</code></pre>
+<hr>
+<h1 id="mathisnan"><code>math.isnan()</code></h1>
+<p><strong>Purpose:</strong>
+Checks if x is Not-a-Number (NaN).</p>
+<p><strong>Syntax:</strong></p>
+<pre><code class="language-python">math.isnan(x)
+</code></pre>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>x</code>: Any number</li>
+</ul>
+<p><strong>Returns:</strong>
+Boolean (True/False)</p>
+<p><strong>Easy Hinglish Explanation:</strong>
+Check karta hai ki number NaN (Not a Number) hai ya nahi. NaN tab aata hai jab koi invalid mathematical operation ho, jaise 0/0.</p>
+<p><strong>Real-Life Analogy:</strong>
+Aapne kisi calculation mein mistake ki hai, result undefined aa gaya. Isnan check karega ki result undefined hai ya nahi.</p>
+<p><strong>Example 1 (Basic):</strong></p>
+<pre><code class="language-python">import math
+
+print(math.isnan(float('nan')))    # True
+print(math.isnan(10))               # False
+print(math.isnan(0/0))              # True (in Python, 0/0 gives error, but some operations give NaN)
+</code></pre>
+<hr>
+<h1 id="mathisqrt"><code>math.isqrt()</code></h1>
+<p><strong>Purpose:</strong>
+Returns the integer square root of x (floor of sqrt(x)).</p>
+<p><strong>Syntax:</strong></p>
+<pre><code class="language-python">math.isqrt(x)
+</code></pre>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>x</code>: Non-negative integer</li>
+</ul>
+<p><strong>Returns:</strong>
+Integer value (floor of square root)</p>
+<p><strong>Easy Hinglish Explanation:</strong>
+Kisi number ka square root nikaalo, lekin sirf integer part lo. Jaise 10 ka square root 3.16 hai, isqrt 3 dega. Yeh hamesha integer return karta hai.</p>
+<p><strong>Real-Life Analogy:</strong>
+Aapke paas 10 tiles hain, aapko square banane hain. Sabse bada square kitna bada ho sakta hai? 3x3 = 9 tiles, 4x4 = 16 tiles nahi ho sakta. Toh isqrt(10) = 3.</p>
+<p><strong>Example 1 (Basic):</strong></p>
+<pre><code class="language-python">import math
+
+print(math.isqrt(10))   # 3
+print(math.isqrt(16))   # 4
+print(math.isqrt(25))   # 5
+</code></pre>
+<hr>
+<h1 id="mathldexp"><code>math.ldexp()</code></h1>
+<p><strong>Purpose:</strong>
+Returns x * (2**i), the inverse of frexp.</p>
+<p><strong>Syntax:</strong></p>
+<pre><code class="language-python">math.ldexp(x, i)
+</code></pre>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>x</code>: Mantissa (float)</li>
+<li><code>i</code>: Exponent (integer)</li>
+</ul>
+<p><strong>Returns:</strong>
+Float value</p>
+<p><strong>Easy Hinglish Explanation:</strong>
+Frexp ne number ko break kiya tha (m, e) mein. Ldexp reverse karta hai - mantissa ko 2 ki power se multiply karke original number return karta hai.</p>
+<p><strong>Real-Life Analogy:</strong>
+Aapne 100 kg ko break kiya 1 * 100 mein. Ldexp wapas 100 kg banayega.</p>
+<p><strong>Example 1 (Basic):</strong></p>
+<pre><code class="language-python">import math
+
+m, e = math.frexp(10)
+print(math.ldexp(m, e))   # 10.0
+print(math.ldexp(0.5, 4)) # 8.0
+</code></pre>
+<hr>
+<h1 id="mathlcm"><code>math.lcm()</code></h1>
+<p><strong>Purpose:</strong>
+Returns the least common multiple (LCM) of the given integers.</p>
+<p><strong>Syntax:</strong></p>
+<pre><code class="language-python">math.lcm(*integers)
+</code></pre>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>*integers</code>: Variable number of integers (2 or more)</li>
+</ul>
+<p><strong>Returns:</strong>
+Integer value (LCM)</p>
+<p><strong>Easy Hinglish Explanation:</strong>
+Do ya zyada numbers lo. Un sab numbers ka sabse chhota common multiple kya hai? LCM woh number bataata hai. Jaise 4 aur 6 ka LCM 12 hai (12 dono se divide ho jaata hai aur 12 se chhota koi bhi dono se nahi divide hota).</p>
+<p><strong>Real-Life Analogy:</strong>
+Aapko 4 aur 6 logo ka time slot match karna hai. Kitne minute baad dono wapas milenge? LCM(4, 6) = 12 minutes.</p>
+<p><strong>Example 1 (Basic):</strong></p>
+<pre><code class="language-python">import math
+
+print(math.lcm(4, 6))       # 12
+print(math.lcm(2, 3, 5))    # 30
+print(math.lcm(10, 15))     # 30
+</code></pre>
+<hr>
+<h1 id="mathperm"><code>math.perm()</code></h1>
+<p><strong>Purpose:</strong>
+Returns the number of ways to select and arrange k items from n items (permutations).</p>
+<p><strong>Syntax:</strong></p>
+<pre><code class="language-python">math.perm(n, k=None)
+</code></pre>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>n</code>: Total number of items (non-negative integer)</li>
+<li><code>k</code>: Number of items to select and arrange (optional, default n)</li>
+</ul>
+<p><strong>Returns:</strong>
+Integer value (number of permutations)</p>
+<p><strong>Easy Hinglish Explanation:</strong>
+Aapke paas n items hain, aapko k items choose karna hai aur unka order matter karta hai. Kitne tareeke hain? Yehi permutations hain. Agar k nahi diya toh n items ka full arrangement count karega (n!).</p>
+<p><strong>Real-Life Analogy:</strong>
+3 racers hain, gold, silver, bronze medal kaun jeetega? Order matter karta hai. Perm(3, 3) = 6 possible rankings.</p>
+<p><strong>Example 1 (Basic):</strong></p>
+<pre><code class="language-python">import math
+
+print(math.perm(5, 2))   # 20 (5*4)
+print(math.perm(3, 3))   # 6 (3*2*1)
+print(math.perm(10, 2))  # 90
+</code></pre>
+<hr>
+<h1 id="mathmodf"><code>math.modf()</code></h1>
+<p><strong>Purpose:</strong>
+Returns the fractional and integer parts of x.</p>
+<p><strong>Syntax:</strong></p>
+<pre><code class="language-python">math.modf(x)
+</code></pre>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>x</code>: Any number</li>
+</ul>
+<p><strong>Returns:</strong>
+Tuple (fractional_part, integer_part) both as floats</p>
+<p><strong>Easy Hinglish Explanation:</strong>
+Kisi number ko break karte hain do parts mein: decimal wala hissa aur integer wala hissa. Jaise 3.14 -&gt; (0.14, 3.0). Dono parts floats hain.</p>
+<p><strong>Real-Life Analogy:</strong>
+Aap Rs. 3.50 ka coin lete hain. Modf bataayega (0.50, 3.0) - 3 rupees aur 50 paise.</p>
+<p><strong>Example 1 (Basic):</strong></p>
+<pre><code class="language-python">import math
+
+print(math.modf(3.14))   # (0.14, 3.0)
+print(math.modf(-2.3))   # (-0.3, -2.0)
+print(math.modf(5.0))    # (0.0, 5.0)
+</code></pre>
+<hr>
+<h1 id="mathnextafter"><code>math.nextafter()</code></h1>
+<p><strong>Purpose:</strong>
+Returns the next floating-point number after x towards y.</p>
+<p><strong>Syntax:</strong></p>
+<pre><code class="language-python">math.nextafter(x, y)
+</code></pre>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>x</code>: Starting number</li>
+<li><code>y</code>: Direction (towards this number)</li>
+</ul>
+<p><strong>Returns:</strong>
+Float value (the next representable float)</p>
+<p><strong>Easy Hinglish Explanation:</strong>
+Computers mein floats limited precision mein store hote hain. Is function se aap x ke aage wala next possible float value le sakte ho, y ki direction mein. Agar x = y, toh wahi return karega.</p>
+<p><strong>Real-Life Analogy:</strong>
+Socho aap ek scale pe hain jahan sirf specific decimal values possible hain. Nextafter aapko agla possible value bataayega.</p>
+<p><strong>Example 1 (Basic):</strong></p>
+<pre><code class="language-python">import math
+
+x = 1.0
+print(math.nextafter(x, 2.0))  # 1.0000000000000002
+print(math.nextafter(x, 0.0))  # 0.9999999999999999
+</code></pre>
+<hr>
+<h1 id="mathpow"><code>math.pow()</code></h1>
+<p><strong>Purpose:</strong>
+Returns x raised to the power y.</p>
+<p><strong>Syntax:</strong></p>
+<pre><code class="language-python">math.pow(x, y)
+</code></pre>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>x</code>: Base</li>
+<li><code>y</code>: Exponent</li>
+</ul>
+<p><strong>Returns:</strong>
+Float value</p>
+<p><strong>Easy Hinglish Explanation:</strong>
+X ko y times multiply karo. Jaise 2^3 = 8. Pow function yehi karta hai. Hamesha float return karta hai.</p>
+<p><strong>Real-Life Analogy:</strong>
+Aapke bank mein 10% interest hai, 5 saal mein paisa kitna ho jayega? 1000 * (1.1)^5. Pow use karke nikaal sakte hain.</p>
+<p><strong>Example 1 (Basic):</strong></p>
+<pre><code class="language-python">import math
+
+print(math.pow(2, 3))   # 8.0
+print(math.pow(5, 2))   # 25.0
+print(math.pow(10, 0))  # 1.0
+</code></pre>
+<hr>
+<h1 id="mathprod"><code>math.prod()</code></h1>
+<p><strong>Purpose:</strong>
+Returns the product of all elements in an iterable.</p>
+<p><strong>Syntax:</strong></p>
+<pre><code class="language-python">math.prod(iterable, *, start=1)
+</code></pre>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>iterable</code>: Any iterable containing numbers</li>
+<li><code>start</code>: Starting value (default 1)</li>
+</ul>
+<p><strong>Returns:</strong>
+Number (int or float based on input)</p>
+<p><strong>Easy Hinglish Explanation:</strong>
+List ya tuple mein diye gaye saare numbers ko multiply karke product return karta hai. Start se multiply karna shuru karta hai (default 1).</p>
+<p><strong>Real-Life Analogy:</strong>
+Aapke paas 5 boxes hain, har box mein 3 items, har item ka weight 2 kg. Total weight = 5<em>3</em>2 = 30 kg. Prod use kar sakte ho.</p>
+<p><strong>Example 1 (Basic):</strong></p>
+<pre><code class="language-python">import math
+
+print(math.prod([2, 3, 4]))       # 24
+print(math.prod([2, 3, 4], start=5)) # 120 (5*2*3*4)
+print(math.prod([1.5, 2.0, 3.0])) # 9.0
+</code></pre>
+<hr>
+<h1 id="mathremainder"><code>math.remainder()</code></h1>
+<p><strong>Purpose:</strong>
+Returns the IEEE 754-style remainder of x divided by y.</p>
+<p><strong>Syntax:</strong></p>
+<pre><code class="language-python">math.remainder(x, y)
+</code></pre>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>x</code>: Dividend</li>
+<li><code>y</code>: Divisor</li>
+</ul>
+<p><strong>Returns:</strong>
+Float value (remainder)</p>
+<p><strong>Easy Hinglish Explanation:</strong>
+Fmod ki tarah hi remainder deta hai, lekin yeh IEEE 754 standard follow karta hai. Isme sign aur value thoda alag ho sakta hai. Remainder x - n*y hota hai, jahan n sabse close integer hai x/y ka.</p>
+<p><strong>Real-Life Analogy:</strong>
+Time calculation mein kaam aata hai. Jaise 10 ko 3 se divide karte hain, 3.33 aata hai. Remainder bataayega kitna bacha.</p>
+<p><strong>Example 1 (Basic):</strong></p>
+<pre><code class="language-python">import math
+
+print(math.remainder(10, 3))   # 1.0 (since 10 - 3*3 = 1)
+print(math.remainder(10, 4))   # 2.0 (10 - 4*2 = 2)
+print(math.remainder(7, 2.5))  # -0.5 (7 - 2.5*3 = -0.5)
+</code></pre>
+<hr>
+<h1 id="mathtrunc"><code>math.trunc()</code></h1>
+<p><strong>Purpose:</strong>
+Truncates x to an integer (removes the decimal part, always towards zero).</p>
+<p><strong>Syntax:</strong></p>
+<pre><code class="language-python">math.trunc(x)
+</code></pre>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>x</code>: Any number</li>
+</ul>
+<p><strong>Returns:</strong>
+Integer value</p>
+<p><strong>Easy Hinglish Explanation:</strong>
+Number ka decimal wala hissa hata deta hai. Positive numbers ke liye floor ki tarah, negative numbers ke liye ceil ki tarah. Hamesha zero ki taraf round karta hai.</p>
+<p><strong>Real-Life Analogy:</strong>
+Aap Rs. 5.99 ka saman kharid rahe hain, lekin aap sirf rupees count karte hain toh 5 rupees (paise ignore). Trunc wahi karta hai.</p>
+<p><strong>Example 1 (Basic):</strong></p>
+<pre><code class="language-python">import math
+
+print(math.trunc(3.14))   # 3
+print(math.trunc(-3.14))  # -3
+print(math.trunc(5.99))   # 5
+</code></pre>
+<hr>
+<h1 id="mathexp"><code>math.exp()</code></h1>
+<p><strong>Purpose:</strong>
+Returns e raised to the power x (e**x).</p>
+<p><strong>Syntax:</strong></p>
+<pre><code class="language-python">math.exp(x)
+</code></pre>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>x</code>: Exponent</li>
+</ul>
+<p><strong>Returns:</strong>
+Float value</p>
+<p><strong>Easy Hinglish Explanation:</strong>
+e (2.718...) ko x power mein raise karo. Jaise exp(1) = 2.718..., exp(2) = 7.389... Exponential growth calculate karne ke kaam aata hai.</p>
+<p><strong>Real-Life Analogy:</strong>
+Bank interest continuously compound ho raha hai. Exp function use hota hai compound interest calculate karne mein.</p>
+<p><strong>Example 1 (Basic):</strong></p>
+<pre><code class="language-python">import math
+
+print(math.exp(1))   # 2.718281828459045
+print(math.exp(0))   # 1.0
+print(math.exp(2))   # 7.38905609893065
+</code></pre>
+<hr>
+<h1 id="mathexpm1"><code>math.expm1()</code></h1>
+<p><strong>Purpose:</strong>
+Returns e**x - 1 (more accurate for very small x).</p>
+<p><strong>Syntax:</strong></p>
+<pre><code class="language-python">math.expm1(x)
+</code></pre>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>x</code>: Exponent</li>
+</ul>
+<p><strong>Returns:</strong>
+Float value</p>
+<p><strong>Easy Hinglish Explanation:</strong>
+Exp(x) - 1 calculate karta hai, lekin jab x bahut chhota hota hai (jaise 0.0000001), toh yeh zyada accurate result deta hai. Normal exp(x) - 1 mein precision loss ho sakti hai.</p>
+<p><strong>Real-Life Analogy:</strong>
+Bahut chhote interest rates calculate kar rahe ho, expm1 use karo taaki accurate result aaye.</p>
+<p><strong>Example 1 (Basic):</strong></p>
+<pre><code class="language-python">import math
+
+print(math.expm1(1e-10))   # 1.00000000005e-10 (accurate)
+print(math.expm1(0.001))   # 0.0010005001667083846
+</code></pre>
+<hr>
+<h1 id="mathlog"><code>math.log()</code></h1>
+<p><strong>Purpose:</strong>
+Returns the natural logarithm of x (or logarithm with specified base).</p>
+<p><strong>Syntax:</strong></p>
+<pre><code class="language-python">math.log(x, base)
+</code></pre>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>x</code>: Number to take logarithm of</li>
+<li><code>base</code>: Base (optional, default is e)</li>
+</ul>
+<p><strong>Returns:</strong>
+Float value</p>
+<p><strong>Easy Hinglish Explanation:</strong>
+Logarithm reverse of exponent hai. Jaise log(100) = 2 (10^2 = 100). Default natural log (base e) hota hai, lekin aap base specify kar sakte hain.</p>
+<p><strong>Real-Life Analogy:</strong>
+Earthquake magnitude Richter scale pe log scale hai. Magnitude 7 ka earthquake, magnitude 6 se 10x zyada powerful hai. Log se yeh calculate hota hai.</p>
+<p><strong>Example 1 (Basic):</strong></p>
+<pre><code class="language-python">import math
+
+print(math.log(2.718))        # ~1.0 (natural log)
+print(math.log(100, 10))      # 2.0 (log base 10)
+print(math.log(8, 2))         # 3.0 (log base 2)
+</code></pre>
+<hr>
+<h1 id="mathlog10"><code>math.log10()</code></h1>
+<p><strong>Purpose:</strong>
+Returns the base-10 logarithm of x.</p>
+<p><strong>Syntax:</strong></p>
+<pre><code class="language-python">math.log10(x)
+</code></pre>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>x</code>: Number to take log of</li>
+</ul>
+<p><strong>Returns:</strong>
+Float value</p>
+<p><strong>Easy Hinglish Explanation:</strong>
+Log base 10. Jaise log10(1000) = 3, kyunki 10^3 = 1000. Science mein bahut use hota hai (pH, decibels, etc.)</p>
+<p><strong>Real-Life Analogy:</strong>
+Aap sound intensity measure kar rahe hain. Decibels log scale pe hain. 40 dB sound, 50 dB se 10x zyada loud hai.</p>
+<p><strong>Example 1 (Basic):</strong></p>
+<pre><code class="language-python">import math
+
+print(math.log10(100))    # 2.0
+print(math.log10(1000))   # 3.0
+print(math.log10(1))      # 0.0
+</code></pre>
+<hr>
+<h1 id="mathlog1p"><code>math.log1p()</code></h1>
+<p><strong>Purpose:</strong>
+Returns the natural logarithm of (1 + x), accurate for small x.</p>
+<p><strong>Syntax:</strong></p>
+<pre><code class="language-python">math.log1p(x)
+</code></pre>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>x</code>: Number</li>
+</ul>
+<p><strong>Returns:</strong>
+Float value</p>
+<p><strong>Easy Hinglish Explanation:</strong>
+log(1+x) calculate karta hai, lekin jab x bahut chhota hai toh yeh zyada accurate result deta hai. Normal log(1+x) mein precision loss ho sakti hai.</p>
+<p><strong>Real-Life Analogy:</strong>
+Bahut chhote percentage changes calculate kar rahe ho, log1p use karo for accuracy.</p>
+<p><strong>Example 1 (Basic):</strong></p>
+<pre><code class="language-python">import math
+
+x = 1e-10
+print(math.log1p(x))   # 9.9999999995e-11 (accurate)
+print(math.log(1+x))   # 9.999999999...e-11 (slightly less accurate)
+</code></pre>
+<hr>
+<h1 id="mathlog2"><code>math.log2()</code></h1>
+<p><strong>Purpose:</strong>
+Returns the base-2 logarithm of x.</p>
+<p><strong>Syntax:</strong></p>
+<pre><code class="language-python">math.log2(x)
+</code></pre>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>x</code>: Number to take log of</li>
+</ul>
+<p><strong>Returns:</strong>
+Float value</p>
+<p><strong>Easy Hinglish Explanation:</strong>
+Log base 2. Jaise log2(8) = 3, kyunki 2^3 = 8. Computer science mein bahut use hota hai (bits, memory, etc.)</p>
+<p><strong>Real-Life Analogy:</strong>
+Aap memory size check kar rahe hain. 8GB memory ka matlab 2^3 GB. Log2 bataayega 3.</p>
+<p><strong>Example 1 (Basic):</strong></p>
+<pre><code class="language-python">import math
+
+print(math.log2(8))    # 3.0
+print(math.log2(32))   # 5.0
+print(math.log2(1))    # 0.0
+</code></pre>
+<hr>
+<h1 id="mathsqrt"><code>math.sqrt()</code></h1>
+<p><strong>Purpose:</strong>
+Returns the square root of x.</p>
+<p><strong>Syntax:</strong></p>
+<pre><code class="language-python">math.sqrt(x)
+</code></pre>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>x</code>: Non-negative number</li>
+</ul>
+<p><strong>Returns:</strong>
+Float value</p>
+<p><strong>Easy Hinglish Explanation:</strong>
+Kisi number ka square root (√x) nikaalta hai. Jo number x ko, us number se multiply karke x de, woh square root hai.</p>
+<p><strong>Real-Life Analogy:</strong>
+Aapke paas 100 sq ft ka room hai, har side kitni lambi hogi? √100 = 10 feet.</p>
+<p><strong>Example 1 (Basic):</strong></p>
+<pre><code class="language-python">import math
+
+print(math.sqrt(16))   # 4.0
+print(math.sqrt(25))   # 5.0
+print(math.sqrt(2))    # 1.4142135623730951
+</code></pre>
+<hr>
+<h1 id="mathacos"><code>math.acos()</code></h1>
+<p><strong>Purpose:</strong>
+Returns the arc cosine of x in radians.</p>
+<p><strong>Syntax:</strong></p>
+<pre><code class="language-python">math.acos(x)
+</code></pre>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>x</code>: Number between -1 and 1</li>
+</ul>
+<p><strong>Returns:</strong>
+Float value in radians (0 to π)</p>
+<p><strong>Easy Hinglish Explanation:</strong>
+Cos inverse. Agar cos(theta) = x hai, toh acos(x) = theta. Jaise cos(0) = 1, toh acos(1) = 0. Inverse trigonometric function hai.</p>
+<p><strong>Real-Life Analogy:</strong>
+Aap building ki height aur distance se angle nikaal rahe hain. Agar height/distance = x hai, toh acos(x) angle bataayega.</p>
+<p><strong>Example 1 (Basic):</strong></p>
+<pre><code class="language-python">import math
+
+print(math.acos(1))     # 0.0
+print(math.acos(0))     # 1.5707963267948966 (π/2)
+print(math.acos(-1))    # 3.141592653589793 (π)
+</code></pre>
+<hr>
+<h1 id="mathacosh"><code>math.acosh()</code></h1>
+<p><strong>Purpose:</strong>
+Returns the inverse hyperbolic cosine of x.</p>
+<p><strong>Syntax:</strong></p>
+<pre><code class="language-python">math.acosh(x)
+</code></pre>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>x</code>: Number ≥ 1</li>
+</ul>
+<p><strong>Returns:</strong>
+Float value</p>
+<p><strong>Easy Hinglish Explanation:</strong>
+Hyperbolic cosine ka inverse. Ye functions special mathematical functions hain jo physics aur engineering mein use hote hain.</p>
+<p><strong>Real-Life Analogy:</strong>
+Catenary curve mein use hota hai (hanging rope/cable ka shape).</p>
+<p><strong>Example 1 (Basic):</strong></p>
+<pre><code class="language-python">import math
+
+print(math.acosh(1))     # 0.0
+print(math.acosh(2))     # 1.3169578969248166
+</code></pre>
+<hr>
+<h1 id="mathasin"><code>math.asin()</code></h1>
+<p><strong>Purpose:</strong>
+Returns the arc sine of x in radians.</p>
+<p><strong>Syntax:</strong></p>
+<pre><code class="language-python">math.asin(x)
+</code></pre>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>x</code>: Number between -1 and 1</li>
+</ul>
+<p><strong>Returns:</strong>
+Float value in radians (-π/2 to π/2)</p>
+<p><strong>Easy Hinglish Explanation:</strong>
+Sin inverse. Agar sin(theta) = x, toh asin(x) = theta. Inverse trigonometric function.</p>
+<p><strong>Real-Life Analogy:</strong>
+Pendulum ka angle calculate kar rahe hain. Sin(theta) = opposite/hypotenuse, asin se theta nikaal sakte hain.</p>
+<p><strong>Example 1 (Basic):</strong></p>
+<pre><code class="language-python">import math
+
+print(math.asin(0))     # 0.0
+print(math.asin(1))     # 1.5707963267948966 (π/2)
+print(math.asin(-1))    # -1.5707963267948966 (-π/2)
+</code></pre>
+<hr>
+<h1 id="mathasinh"><code>math.asinh()</code></h1>
+<p><strong>Purpose:</strong>
+Returns the inverse hyperbolic sine of x.</p>
+<p><strong>Syntax:</strong></p>
+<pre><code class="language-python">math.asinh(x)
+</code></pre>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>x</code>: Any number</li>
+</ul>
+<p><strong>Returns:</strong>
+Float value</p>
+<p><strong>Easy Hinglish Explanation:</strong>
+Hyperbolic sine ka inverse. Special functions for advanced math.</p>
+<p><strong>Real-Life Analogy:</strong>
+Relativity and special functions mein use.</p>
+<p><strong>Example 1 (Basic):</strong></p>
+<pre><code class="language-python">import math
+
+print(math.asinh(0))     # 0.0
+print(math.asinh(1))     # 0.881373587019543
+</code></pre>
+<hr>
+<h1 id="mathatan"><code>math.atan()</code></h1>
+<p><strong>Purpose:</strong>
+Returns the arc tangent of x in radians.</p>
+<p><strong>Syntax:</strong></p>
+<pre><code class="language-python">math.atan(x)
+</code></pre>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>x</code>: Any number</li>
+</ul>
+<p><strong>Returns:</strong>
+Float value in radians (-π/2 to π/2)</p>
+<p><strong>Easy Hinglish Explanation:</strong>
+Tan inverse. Agar tan(theta) = x, toh atan(x) = theta.</p>
+<p><strong>Real-Life Analogy:</strong>
+Road ke slope se angle nikaal rahe hain. Slope = x, atan(x) = angle.</p>
+<p><strong>Example 1 (Basic):</strong></p>
+<pre><code class="language-python">import math
+
+print(math.atan(0))     # 0.0
+print(math.atan(1))     # 0.7853981633974483 (π/4)
+print(math.atan(-1))    # -0.7853981633974483 (-π/4)
+</code></pre>
+<hr>
+<h1 id="mathatan2"><code>math.atan2()</code></h1>
+<p><strong>Purpose:</strong>
+Returns the arc tangent of y/x in radians.</p>
+<p><strong>Syntax:</strong></p>
+<pre><code class="language-python">math.atan2(y, x)
+</code></pre>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>y</code>: y-coordinate</li>
+<li><code>x</code>: x-coordinate</li>
+</ul>
+<p><strong>Returns:</strong>
+Float value in radians (-π to π)</p>
+<p><strong>Easy Hinglish Explanation:</strong>
+Atan2(y, x) = angle from x-axis to point (x, y). Atan se better hai kyunki yeh sign handle karta hai aur quadrant decide karta hai.</p>
+<p><strong>Real-Life Analogy:</strong>
+Compass direction nikaal rahe hain. Point (3, 4) ka angle from x-axis kya hai? Atan2(4, 3) bataayega angle.</p>
+<p><strong>Example 1 (Basic):</strong></p>
+<pre><code class="language-python">import math
+
+print(math.atan2(1, 1))   # 0.785398 (45°)
+print(math.atan2(-1, -1)) # -2.356194 (-135°)
+print(math.atan2(0, -1))  # 3.14159 (180°)
+</code></pre>
+<hr>
+<h1 id="mathatanh"><code>math.atanh()</code></h1>
+<p><strong>Purpose:</strong>
+Returns the inverse hyperbolic tangent of x.</p>
+<p><strong>Syntax:</strong></p>
+<pre><code class="language-python">math.atanh(x)
+</code></pre>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>x</code>: Number between -1 and 1</li>
+</ul>
+<p><strong>Returns:</strong>
+Float value</p>
+<p><strong>Easy Hinglish Explanation:</strong>
+Hyperbolic tangent ka inverse.</p>
+<p><strong>Real-Life Analogy:</strong>
+Signal processing aur physics mein use.</p>
+<p><strong>Example 1 (Basic):</strong></p>
+<pre><code class="language-python">import math
+
+print(math.atanh(0))     # 0.0
+print(math.atanh(0.5))   # 0.5493061443340549
+</code></pre>
+<hr>
+<h1 id="mathcos"><code>math.cos()</code></h1>
+<p><strong>Purpose:</strong>
+Returns the cosine of x radians.</p>
+<p><strong>Syntax:</strong></p>
+<pre><code class="language-python">math.cos(x)
+</code></pre>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>x</code>: Angle in radians</li>
+</ul>
+<p><strong>Returns:</strong>
+Float value between -1 and 1</p>
+<p><strong>Easy Hinglish Explanation:</strong>
+Cosine (cos) trigonometric function. Angle ko radian mein do, cos value aayegi.</p>
+<p><strong>Real-Life Analogy:</strong>
+Clock ke minute hand ka projection on x-axis.</p>
+<p><strong>Example 1 (Basic):</strong></p>
+<pre><code class="language-python">import math
+
+print(math.cos(0))     # 1.0
+print(math.cos(math.pi/2))  # 6.123e-17 (~0)
+print(math.cos(math.pi))    # -1.0
+</code></pre>
+<hr>
+<h1 id="mathcosh"><code>math.cosh()</code></h1>
+<p><strong>Purpose:</strong>
+Returns the hyperbolic cosine of x.</p>
+<p><strong>Syntax:</strong></p>
+<pre><code class="language-python">math.cosh(x)
+</code></pre>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>x</code>: Any number</li>
+</ul>
+<p><strong>Returns:</strong>
+Float value</p>
+<p><strong>Easy Hinglish Explanation:</strong>
+Hyperbolic cosine. Special function.</p>
+<p><strong>Real-Life Analogy:</strong>
+Hanging cable (catenary) ka shape.</p>
+<p><strong>Example 1 (Basic):</strong></p>
+<pre><code class="language-python">import math
+
+print(math.cosh(0))     # 1.0
+print(math.cosh(1))     # 1.5430806348152437
+</code></pre>
+<hr>
+<h1 id="mathsin"><code>math.sin()</code></h1>
+<p><strong>Purpose:</strong>
+Returns the sine of x radians.</p>
+<p><strong>Syntax:</strong></p>
+<pre><code class="language-python">math.sin(x)
+</code></pre>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>x</code>: Angle in radians</li>
+</ul>
+<p><strong>Returns:</strong>
+Float value between -1 and 1</p>
+<p><strong>Easy Hinglish Explanation:</strong>
+Sine (sin) trigonometric function.</p>
+<p><strong>Real-Life Analogy:</strong>
+Pendulum ka displacement.</p>
+<p><strong>Example 1 (Basic):</strong></p>
+<pre><code class="language-python">import math
+
+print(math.sin(0))     # 0.0
+print(math.sin(math.pi/2))  # 1.0
+print(math.sin(math.pi))    # 1.224e-16 (~0)
+</code></pre>
+<hr>
+<h1 id="mathsinh"><code>math.sinh()</code></h1>
+<p><strong>Purpose:</strong>
+Returns the hyperbolic sine of x.</p>
+<p><strong>Syntax:</strong></p>
+<pre><code class="language-python">math.sinh(x)
+</code></pre>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>x</code>: Any number</li>
+</ul>
+<p><strong>Returns:</strong>
+Float value</p>
+<p><strong>Easy Hinglish Explanation:</strong>
+Hyperbolic sine.</p>
+<p><strong>Real-Life Analogy:</strong>
+Special functions in physics.</p>
+<p><strong>Example 1 (Basic):</strong></p>
+<pre><code class="language-python">import math
+
+print(math.sinh(0))     # 0.0
+print(math.sinh(1))     # 1.1752011936438014
+</code></pre>
+<hr>
+<h1 id="mathtan"><code>math.tan()</code></h1>
+<p><strong>Purpose:</strong>
+Returns the tangent of x radians.</p>
+<p><strong>Syntax:</strong></p>
+<pre><code class="language-python">math.tan(x)
+</code></pre>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>x</code>: Angle in radians</li>
+</ul>
+<p><strong>Returns:</strong>
+Float value</p>
+<p><strong>Easy Hinglish Explanation:</strong>
+Tangent (tan) = sin/cos.</p>
+<p><strong>Real-Life Analogy:</strong>
+Slope of a line.</p>
+<p><strong>Example 1 (Basic):</strong></p>
+<pre><code class="language-python">import math
+
+print(math.tan(0))     # 0.0
+print(math.tan(math.pi/4))  # 0.9999 (~1)
+</code></pre>
+<hr>
+<h1 id="mathtanh"><code>math.tanh()</code></h1>
+<p><strong>Purpose:</strong>
+Returns the hyperbolic tangent of x.</p>
+<p><strong>Syntax:</strong></p>
+<pre><code class="language-python">math.tanh(x)
+</code></pre>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>x</code>: Any number</li>
+</ul>
+<p><strong>Returns:</strong>
+Float value between -1 and 1</p>
+<p><strong>Easy Hinglish Explanation:</strong>
+Hyperbolic tangent = sinh/cosh.</p>
+<p><strong>Real-Life Analogy:</strong>
+Machine learning activation functions.</p>
+<p><strong>Example 1 (Basic):</strong></p>
+<pre><code class="language-python">import math
+
+print(math.tanh(0))     # 0.0
+print(math.tanh(1))     # 0.7615941559557649
+</code></pre>
+<hr>
+<h1 id="mathdegrees"><code>math.degrees()</code></h1>
+<p><strong>Purpose:</strong>
+Converts an angle from radians to degrees.</p>
+<p><strong>Syntax:</strong></p>
+<pre><code class="language-python">math.degrees(x)
+</code></pre>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>x</code>: Angle in radians</li>
+</ul>
+<p><strong>Returns:</strong>
+Float value in degrees</p>
+<p><strong>Easy Hinglish Explanation:</strong>
+Radians ko degrees mein convert karta hai. 180° = π radians.</p>
+<p><strong>Real-Life Analogy:</strong>
+Math book mein angles degrees mein hote hain, lekin computer radians use karta hai. Degrees function convert karta hai.</p>
+<p><strong>Example 1 (Basic):</strong></p>
+<pre><code class="language-python">import math
+
+print(math.degrees(math.pi))    # 180.0
+print(math.degrees(math.pi/2))  # 90.0
+print(math.degrees(1))          # 57.29577951308232
+</code></pre>
+<hr>
+<h1 id="mathradians"><code>math.radians()</code></h1>
+<p><strong>Purpose:</strong>
+Converts an angle from degrees to radians.</p>
+<p><strong>Syntax:</strong></p>
+<pre><code class="language-python">math.radians(x)
+</code></pre>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>x</code>: Angle in degrees</li>
+</ul>
+<p><strong>Returns:</strong>
+Float value in radians</p>
+<p><strong>Easy Hinglish Explanation:</strong>
+Degrees ko radians mein convert karta hai. 180° = π radians.</p>
+<p><strong>Real-Life Analogy:</strong>
+Aapko angle degrees mein pata hai, lekin math function radians chahta hai. Radians use karo.</p>
+<p><strong>Example 1 (Basic):</strong></p>
+<pre><code class="language-python">import math
+
+print(math.radians(180))    # 3.141592653589793 (π)
+print(math.radians(90))     # 1.5707963267948966 (π/2)
+print(math.radians(45))     # 0.7853981633974483 (π/4)
+</code></pre>
+<hr>
+<h1 id="constants">Constants</h1>
+<h2 id="mathpi"><code>math.pi</code></h2>
+<p><strong>Purpose:</strong>
+The mathematical constant π (pi) = 3.141592653589793.</p>
+<p><strong>Syntax:</strong></p>
+<pre><code class="language-python">math.pi
+</code></pre>
+<p><strong>Real-Life Analogy:</strong>
+Circle ka circumference/diameter ratio.</p>
+<p><strong>Example:</strong></p>
+<pre><code class="language-python">import math
+
+print(math.pi)  # 3.141592653589793
+</code></pre>
+<hr>
+<h2 id="mathe"><code>math.e</code></h2>
+<p><strong>Purpose:</strong>
+The mathematical constant e = 2.718281828459045.</p>
+<p><strong>Syntax:</strong></p>
+<pre><code class="language-python">math.e
+</code></pre>
+<p><strong>Real-Life Analogy:</strong>
+Natural growth constant.</p>
+<p><strong>Example:</strong></p>
+<pre><code class="language-python">import math
+
+print(math.e)  # 2.718281828459045
+</code></pre>
+<hr>
+<h2 id="mathtau"><code>math.tau</code></h2>
+<p><strong>Purpose:</strong>
+The mathematical constant τ (tau) = 2π = 6.283185307179586.</p>
+<p><strong>Syntax:</strong></p>
+<pre><code class="language-python">math.tau
+</code></pre>
+<p><strong>Real-Life Analogy:</strong>
+Circle ka radius ratio.</p>
+<p><strong>Example:</strong></p>
+<pre><code class="language-python">import math
+
+print(math.tau)  # 6.283185307179586
+</code></pre>
+<hr>
+<h2 id="mathinf"><code>math.inf</code></h2>
+<p><strong>Purpose:</strong>
+Floating-point positive infinity.</p>
+<p><strong>Syntax:</strong></p>
+<pre><code class="language-python">math.inf
+</code></pre>
+<p><strong>Example:</strong></p>
+<pre><code class="language-python">import math
+
+print(math.inf)      # inf
+print(math.inf &gt; 1000000)  # True
+</code></pre>
+<hr>
+<h2 id="mathnan"><code>math.nan</code></h2>
+<p><strong>Purpose:</strong>
+Floating-point Not-a-Number (NaN).</p>
+<p><strong>Syntax:</strong></p>
+<pre><code class="language-python">math.nan
+</code></pre>
+<p><strong>Example:</strong></p>
+<pre><code class="language-python">import math
+
+print(math.nan)          # nan
+print(math.isnan(math.nan))  # True
+</code></pre>
+<hr>
+<h2 id="complete-example-program">Complete Example Program</h2>
+<pre><code class="language-python">import math
+
+print("=== Python Math Module Complete Example ===\n")
+
+# Number Theory
+print("Number Theory:")
+print(f"math.gcd(12, 18) = {math.gcd(12, 18)}")
+print(f"math.lcm(4, 6, 10) = {math.lcm(4, 6, 10)}")
+print(f"math.isqrt(10) = {math.isqrt(10)}")
+print()
+
+# Rounding
+print("Rounding:")
+print(f"math.ceil(2.3) = {math.ceil(2.3)}")
+print(f"math.floor(2.9) = {math.floor(2.9)}")
+print(f"math.trunc(-3.14) = {math.trunc(-3.14)}")
+print()
+
+# Trigonometry
+print("Trigonometry:")
+angle = math.radians(45)
+print(f"sin(45°) = {math.sin(angle):.4f}")
+print(f"cos(45°) = {math.cos(angle):.4f}")
+print(f"tan(45°) = {math.tan(angle):.4f}")
+print()
+
+# Constants
+print("Constants:")
+print(f"π = {math.pi}")
+print(f"e = {math.e}")
+print(f"τ = {math.tau}")
+</code></pre>
+<hr>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ol>
+<li><p><strong>Math module</strong> mein 50+ functions hain jo mathematical operations provide karte hain.</p>
+</li>
+<li><p><strong>Trigonometric functions</strong> radians use karte hain, degrees nahi. Radians/degrees convert karna yaad rakhein.</p>
+</li>
+<li><p><strong>Floating-point precision</strong> ke liye special functions hain: <code>math.fsum()</code>, <code>math.isclose()</code>, <code>math.nextafter()</code>, etc.</p>
+</li>
+<li><p><strong>Constants</strong> jaise pi, e, tau, inf, nan readily available hain.</p>
+</li>
+<li><p><strong>Number theory</strong> functions: gcd, lcm, isqrt, factorial, comb, perm.</p>
+</li>
+<li><p><strong>Always import math</strong> module use karne se pehle.</p>
+</li>
+<li><p>Most functions <strong>float return</strong> karte hain, except jo specifically int return karte hain (ceil, floor, trunc, factorial, etc.)</p>
+</li>
+</ol>
