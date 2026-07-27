@@ -1,0 +1,72 @@
+18. Reverse an Array
+
+Problem Understanding:
+Reverse the order of elements in an integer array.
+
+Example:
+
+· Input: [1, 2, 3, 4, 5]
+· Output: [5, 4, 3, 2, 1]
+
+Implementation Methods:
+
+Method 1 - Slicing:
+
+```
+return arr[::-1]
+```
+
+Method 2 - In-place using Two Pointers:
+
+```
+left, right = 0, len(arr) - 1
+while left < right:
+    swap arr[left] and arr[right]
+    left += 1
+    right -= 1
+```
+
+Method 3 - Using Stack:
+
+· Push all elements onto a stack
+· Pop to reverse the order
+
+Space Considerations:
+
+· In-place reversal: O(1) extra space
+· Slicing: O(n) extra space
+
+---
+
+19. Postorder Traversal Using Recursive Diagonals
+
+Problem Understanding:
+Traverse a binary tree in postorder (left, right, root)
+ and organize nodes by diagonals.
+
+Postorder Traversal:
+
+· Visit left subtree → Visit right subtree → Visit root
+
+Diagonals Concept:
+
+· All nodes on the same diagonal have the same (left - right) value
+· When traversing:
+  · Moving left: diagonal index increases (or decreases depending on definition)
+  · Moving right: diagonal index stays the same
+
+Algorithm:
+
+1. Create a map from diagonal index to list of node values
+2. Recursively traverse:
+   · Left child: diag + 1
+   · Right child: diag (or diag, depending on convention)
+   · Postorder ensures children are processed before parent
+
+Why Diagonal Traversal:
+
+· Useful for visualizing tree structure
+· Diagonal numbering helps identify same-slope nodes
+
+---
+
